@@ -4,13 +4,11 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack')
 
 module.exports = {
-  entry: {
-    app: './src/index.js'
-  },
+  entry: './src/index.js',
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'Code Splitting'
+      title: 'Caching'
     }),
     // CommonsChunkPlugin 插件可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk
     // new webpack.optimize.CommonsChunkPlugin({
@@ -20,9 +18,9 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].[hash].js',
     // 非入口(non-entry) chunk 文件的名称
-    chunkFilename: '[name].bundle.js',
+    // chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
