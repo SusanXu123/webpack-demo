@@ -1,12 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack')
+// const webpack = require('webpack')
 
 module.exports = {
   entry: {
-    app: './src/index.js',
-    another: './src/another-module.js'
+    app: './src/index.js'
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
@@ -17,18 +16,14 @@ module.exports = {
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'common' // 指定公共 bundle 的名称
     // }),
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    // new webpack.NamedModulesPlugin(),
+    // new webpack.HotModuleReplacementPlugin()
   ],
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    }
-  },
   output: {
     filename: '[name].bundle.js',
+    // 非入口(non-entry) chunk 文件的名称
+    chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
   },
   module: {
     rules: [{
