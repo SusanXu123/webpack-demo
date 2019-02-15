@@ -1,5 +1,7 @@
  import _ from 'lodash'
  import { cube } from './math.js'
+ import './style.css';
+
 
  if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');
@@ -9,6 +11,7 @@
 //   var button = document.createElement('button');
 //   var br = document.createElement('br');
 //   button.innerHTML = 'Click me and look at the console!';
+  element.classList.add('hello');
   element.innerHTML = _.join([
       'Hello webpack!',
       '5 cubed is equal to ' + cube(5)
